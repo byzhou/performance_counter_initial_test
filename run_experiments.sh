@@ -1,0 +1,25 @@
+#branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend,
+
+#perf script -i bzip.data.1 | grep cache-misses | grep bzip2 | awk '{ print $3 $4 }'
+
+# perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o train_bzip2_program ../bzip2_base.i386-m32-gcc42-nn input.program 10 
+perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o train_bzip2 ./bzip2_base.i386-m32-gcc42-nn input.combined 80 
+perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o train_mcf ./mcf_base.i386-m32-gcc42-nn inp.in 
+perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o train_hmmer ./hmmer_base.i386-m32-gcc42-nn --fixed 0 --mean 425 --num 85000 --sd 300 --seed 0 leng100.hmm 
+perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o train_sjeng ./sjeng_base.i386-m32-gcc42-nn train.txt 
+perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o train_libquantum ./libquantum_base.i386-m32-gcc42-nn 143 25 
+perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o train_h264 ./h264ref_base.i386-m32-gcc42-nn -d foreman_train_encoder_baseline.cfg 
+# perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o ref_ ./bzip2_base.i386-m32-gcc42-nn input.source 280 
+# perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o ref_ ./bzip2_base.i386-m32-gcc42-nn chicken.jpg 30 
+# perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o ref_ ./bzip2_base.i386-m32-gcc42-nn liberty.jpg 30 
+# perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o ref_ ./bzip2_base.i386-m32-gcc42-nn input.program 280 
+# perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o ref_ ./bzip2_base.i386-m32-gcc42-nn text.html 280 
+perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o ref_bzip2 ./bzip2_base.i386-m32-gcc42-nn input.combined 200 
+perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o ref_mcf ./mcf_base.i386-m32-gcc42-nn inp.in 
+#perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o ref_ ./hmmer_base.i386-m32-gcc42-nn nph3.hmm swiss41 
+perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o ref_hmmer ./hmmer_base.i386-m32-gcc42-nn --fixed 0 --mean 500 --num 500000 --sd 350 --seed 0 retro.hmm 
+perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o ref_sjeng ./sjeng_base.i386-m32-gcc42-nn ref.txt 
+perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o ref_libquantum ./libquantum_base.i386-m32-gcc42-nn 1397 8 
+#perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o ref_ ./h264ref_base.i386-m32-gcc42-nn -d foreman_ref_encoder_baseline.cfg 
+#perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o ref_ ./h264ref_base.i386-m32-gcc42-nn -d foreman_ref_encoder_main.cfg 
+perf record -e branch-instructions,branch-misses,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,stalled-cycles-backend,stalled-cycles-frontend -o ref_h264 ./h264ref_base.i386-m32-gcc42-nn -d sss_encoder_main.cfg 
